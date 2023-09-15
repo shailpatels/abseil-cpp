@@ -1,3 +1,10 @@
+This is a fork of [Abseil](https://github.com/abseil/abseil-cpp), the only change 
+is using Zig as a build system
+
+Original README:
+
+------------------------------------------------------
+
 # Abseil - C++ Common Libraries
 
 The repository contains the Abseil C++ library code. Abseil is an open-source
