@@ -43,7 +43,9 @@ pub fn build(b: *std.Build) void {
     // running `zig build`).
     b.installArtifact(lib_abseil);
     //copy header files to install location
-    b.installDirectory(.{
+
+    //want this instead of b.installDirectory(install_opts) so build.zig's that use this as a dependency can use header files
+    lib_abseil.installHeadersDirectoryOptions(.{
         .source_dir = .{ .path = "absl" },
         .install_dir = .header,
         .install_subdir = "absl",
