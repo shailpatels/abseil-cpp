@@ -42,6 +42,19 @@ pub fn build(b: *std.Build) void {
     // location when the user invokes the "install" step (the default step when
     // running `zig build`).
     b.installArtifact(lib_abseil);
+    //copy header files to install location
+    b.installDirectory(.{
+        .source_dir = .{ .path = "absl" },
+        .install_dir = .header,
+        .install_subdir = "absl",
+        .exclude_extensions = &.{
+            "cc",
+            "proto",
+            "bazel",
+            "txt",
+            "py",
+        },
+    });
 
     // Creates a step for unit testing. This only builds the test executable
     // but does not run it.
